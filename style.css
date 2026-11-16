@@ -1,0 +1,922 @@
+/* ==========================================================================
+   Microsoft India Homepage Replica
+   ========================================================================== */
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ms-blue: #0067b8;
+  --ms-dark-blue: #004580;
+  --ms-bg: #ffffff;
+  --ms-bg-alt: #f2f2f2;
+  --ms-text: #171717;
+  --ms-text-secondary: #424242;
+  --ms-link: #0067b8;
+  --ms-border: #e6e6e6;
+  --ms-footer-bg: #f2f2f2;
+  --ms-btn-radius: 2px;
+  --nav-height: 48px;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ms-text);
+  background: var(--ms-bg);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--ms-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+}
+.skip-link:focus {
+  left: 0;
+  background: #fff;
+  padding: 8px 16px;
+}
+
+/* ==========================================================================
+   Header / Navigation
+   ========================================================================== */
+
+.uhf-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid var(--ms-border);
+  font-size: 13px;
+}
+
+.nav-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 16px;
+}
+
+.ms-logo img {
+  height: 18px;
+  width: auto;
+}
+
+.main-nav {
+  flex: 1;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-list li {
+  position: relative;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0 12px;
+  line-height: var(--nav-height);
+  color: var(--ms-text);
+  font-size: 13px;
+}
+
+.nav-list a:hover {
+  color: var(--ms-text);
+  text-decoration: underline;
+}
+
+.nav-list-secondary {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-list-secondary .nav-icon .nav-icon-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  height: var(--nav-height);
+  color: var(--ms-text);
+}
+
+/* More dropdown - pure CSS with checkbox hack */
+.more-toggle-checkbox {
+  display: none;
+}
+
+.dropdown-toggle,
+.dropdown-toggle-text {
+  padding: 0 12px;
+  height: var(--nav-height);
+  font-size: 13px;
+  color: var(--ms-text);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-toggle-text::after {
+  content: "▾";
+  margin-left: 6px;
+  font-size: 10px;
+}
+
+.has-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 320px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border: 1px solid var(--ms-border);
+  padding: 8px 0;
+  display: none;
+  z-index: 1001;
+}
+
+/* Show dropdown on hover (desktop) */
+.has-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Show dropdown on checkbox check (mobile/tap) */
+.more-toggle-checkbox:checked ~ .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 20px;
+  line-height: 1.5;
+  color: var(--ms-text);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background: var(--ms-bg-alt);
+  text-decoration: none;
+}
+
+/* Mobile menu toggle - pure CSS with checkbox hack */
+.nav-toggle-checkbox {
+  display: none;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  height: var(--nav-height);
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.mobile-menu-toggle .bar {
+  width: 20px;
+  height: 2px;
+  background: var(--ms-text);
+  transition: 0.3s;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-height: 560px;
+  background: #fff;
+}
+
+.hero-content {
+  padding: 60px 48px;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 2.75rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  color: var(--ms-text);
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-bottom: 28px;
+  color: var(--ms-text-secondary);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 400px;
+}
+
+/* ==========================================================================
+   Microsoft Button
+   ========================================================================== */
+
+.ms-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--ms-blue);
+  color: #fff;
+  border-radius: var(--ms-btn-radius);
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.ms-btn:hover {
+  background: var(--ms-dark-blue);
+  text-decoration: none;
+  color: #fff;
+}
+
+.ms-btn-primary {
+  background: var(--ms-blue);
+}
+
+/* ==========================================================================
+   Card Banner (Surface lineup)
+   ========================================================================== */
+
+.card-banner-section {
+  padding: 40px 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.card-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card-banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 400px;
+}
+
+.card-banner-content {
+  padding: 60px 48px;
+  max-width: 540px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fff;
+  color: var(--ms-text);
+  border: 1px solid var(--ms-border);
+  margin-bottom: 16px;
+}
+
+.card-banner-content h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.card-banner-content p {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  color: var(--ms-text-secondary);
+}
+
+/* ==========================================================================
+   Quick Links
+   ========================================================================== */
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.quick-link a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--ms-text);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.quick-link a:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.quick-link img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.quick-link span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ms-text);
+}
+
+.quick-link span::after {
+  content: " ›";
+  color: var(--ms-link);
+}
+
+/* ==========================================================================
+   Card Grid Section
+   ========================================================================== */
+
+.card-grid-section,
+.business-section {
+  padding: 40px 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card-link {
+  display: block;
+  color: var(--ms-text);
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: none;
+}
+
+.card-image img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 24px;
+}
+
+.card-body h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--ms-text);
+}
+
+.card-body p {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: var(--ms-text-secondary);
+}
+
+.card-cta {
+  color: var(--ms-link);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.card-cta::after {
+  content: " ›";
+}
+
+.card-cta:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Section Heading
+   ========================================================================== */
+
+.section-heading {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+  padding-left: 0;
+}
+
+/* ==========================================================================
+   Horizontal Banner (Windows 11 / Sustainability)
+   ========================================================================== */
+
+.horizontal-banner-section {
+  padding: 40px 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.horizontal-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.horizontal-banner-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.horizontal-banner-content {
+  position: absolute;
+  top: 50%;
+  left: 48px;
+  transform: translateY(-50%);
+  max-width: 480px;
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+}
+
+.horizontal-banner-content h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.horizontal-banner-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  color: var(--ms-text-secondary);
+}
+
+/* ==========================================================================
+   Follow Microsoft
+   ========================================================================== */
+
+.follow-section {
+  padding: 48px 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.follow-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.social-links a {
+  display: inline-flex;
+  transition: opacity 0.2s;
+}
+
+.social-links a:hover {
+  opacity: 0.8;
+}
+
+.social-links img {
+  width: 40px;
+  height: 40px;
+}
+
+/* ==========================================================================
+   Back to Top
+   ========================================================================== */
+
+.back-to-top {
+  padding: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.back-to-top a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ms-text);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.back-to-top a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.ms-footer {
+  background: var(--ms-footer-bg);
+  padding-top: 40px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.footer-col h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ms-text);
+  padding: 0 0 12px;
+  margin-bottom: 4px;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  font-size: 11px;
+  color: var(--ms-text-secondary);
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.footer-col ul li a:hover {
+  text-decoration: underline;
+  color: var(--ms-text);
+}
+
+/* Footer bottom */
+.footer-bottom {
+  border-top: 1px solid var(--ms-border);
+  padding: 16px 0;
+}
+
+.footer-bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom-left,
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-bottom a {
+  font-size: 11px;
+  color: var(--ms-text-secondary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 11px;
+  color: var(--ms-text-secondary);
+}
+
+/* ==========================================================================
+   Responsive: Tablet (≤1024px)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 2.25rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-content {
+    padding: 40px 32px;
+  }
+
+  .card-banner-content {
+    padding: 40px 32px;
+  }
+
+  .horizontal-banner-content {
+    left: 24px;
+    padding: 24px;
+    max-width: 400px;
+  }
+}
+
+/* ==========================================================================
+   Responsive: Mobile (≤768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+
+  .nav-list-secondary .has-dropdown {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  /* Show mobile nav when checkbox is checked */
+  .nav-toggle-checkbox:checked ~ .main-nav {
+    display: block;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid var(--ms-border);
+    z-index: 1001;
+  }
+
+  .nav-toggle-checkbox:checked ~ .main-nav .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-toggle-checkbox:checked ~ .main-nav .nav-list li {
+    border-bottom: 1px solid var(--ms-border);
+  }
+
+  .nav-toggle-checkbox:checked ~ .main-nav .nav-list a {
+    padding: 12px 24px;
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  /* Hero stacks vertically */
+  .hero-section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding: 32px 20px;
+    order: 2;
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-image {
+    order: 1;
+  }
+
+  .hero-image img {
+    min-height: 280px;
+  }
+
+  /* Card banner stacks */
+  .card-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .card-banner-image img {
+    min-height: 280px;
+  }
+
+  .card-banner-content {
+    padding: 32px 20px;
+  }
+
+  .card-banner-content h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Quick links */
+  .quick-links {
+    gap: 20px;
+  }
+
+  .quick-link img {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* Card grid: single column */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card-grid-section,
+  .business-section {
+    padding: 24px 16px;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  /* Horizontal banner content overlays */
+  .horizontal-banner-content {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    padding: 24px 20px;
+    background: #fff;
+  }
+
+  .horizontal-banner-section {
+    padding: 24px 16px;
+  }
+
+  .horizontal-banner-content h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Follow section */
+  .follow-section {
+    padding: 32px 16px;
+  }
+
+  /* Footer */
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 16px 24px;
+  }
+
+  .footer-col h3 {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ms-border);
+  }
+
+  .footer-col h3::after {
+    content: " +";
+    position: absolute;
+    right: 0;
+    color: var(--ms-text-secondary);
+  }
+
+  .footer-bottom-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .footer-bottom-left,
+  .footer-bottom-right {
+    gap: 12px;
+  }
+
+  .back-to-top {
+    text-align: left;
+    padding: 16px;
+  }
+}
+
+/* ==========================================================================
+   Responsive: Small mobile (≤480px)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .ms-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .quick-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-links {
+    gap: 16px;
+  }
+
+  .social-links img {
+    width: 32px;
+    height: 32px;
+  }
+}
